@@ -9,6 +9,7 @@ import (
 	"github.com/lqqyt2423/go-mitmproxy/addon"
 	"github.com/lqqyt2423/go-mitmproxy/proxy"
 	"github.com/lqqyt2423/go-mitmproxy/web"
+	"github.com/lqqyt2423/go-mitmproxy/cmd/Extension"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -82,6 +83,7 @@ func main() {
 	log.Infof("go-mitmproxy version %v\n", p.Version)
 
 	p.AddAddon(&proxy.LogAddon{})
+	p.AddAddon(&Extension.AddHeader{})
 	p.AddAddon(web.NewWebAddon(config.webAddr))
 
 	if config.dump != "" {
